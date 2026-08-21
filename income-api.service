@@ -1,0 +1,15 @@
+[Unit]
+Description=Income Model Inference Server
+After=network.target
+
+[Service]
+User=dongl
+WorkingDirectory=/home/dongl
+Environment="ARTIFACT_BUCKET=income-lab-bucket-donglam-16"
+Environment="GOOGLE_APPLICATION_CREDENTIALS=/home/dongl/sa-key.json"
+ExecStart=/usr/bin/python3 /home/dongl/src/serve.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
